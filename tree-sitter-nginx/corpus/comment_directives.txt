@@ -1,0 +1,10 @@
+==================
+Comment Directive
+==================
+
+# [ debug | info | notice | warn | error | crit ]
+
+---
+
+(conf
+  (comment))

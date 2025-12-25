@@ -1,0 +1,127 @@
+==================
+Simple Directive - Generic
+==================
+
+load_module modules/ngx_http_js_module.so;
+
+---
+
+(conf
+  (simple_directive
+	name: (directive)
+	(param
+		(generic))))
+
+
+==================
+Simple Directive - Number
+==================
+
+listen 8080;
+
+---
+
+(conf
+  (simple_directive
+	name: (directive)
+	(param
+	  (number))))
+
+
+==================
+Simple Directive - Metric
+==================
+
+client_header_buffer_size    1k;
+
+---
+
+(conf
+  (simple_directive
+	name: (directive)
+	(param
+	  (metric))))
+
+
+==================
+Simple Directive - IPV4
+==================
+
+proxy_pass         http://127.0.0.1/;
+
+---
+
+(conf
+  (simple_directive
+	name: (directive)
+	(param
+      (uri
+		scheme: (scheme)
+		(ipv4)))
+	(param
+	  (regex))))
+
+
+==================
+Simple Directive - Set Variable
+==================
+
+proxy_set_header X-Real-IP $remote_addr;
+
+---
+
+	(conf
+	  (simple_directive
+		(directive)
+		(param
+		  (generic))
+		(param
+		  (variable))))
+
+
+==================
+Simple Directive - URI w/ Port and Variables
+==================
+
+error_page 497 301 =301 https://$host:10443$request_uri;
+
+---
+
+(conf
+  (simple_directive
+    name: (directive)
+    (param
+		(number))
+    (param
+      (number))
+    (param
+      (modifier))
+    (param
+      (number))
+    (param
+      (uri
+        scheme: (scheme)
+        (variable)))
+    (param
+      (regex))
+    (param
+      (number))
+    (param
+      (variable))))
+
+
+==================
+Simple Directive - Multi Generic
+==================
+
+server_name   one.example.com  www.one.example.com;
+
+---
+
+(conf
+  (simple_directive
+	name: (directive)
+	(param
+	  (generic))
+	(param
+	  (generic))))

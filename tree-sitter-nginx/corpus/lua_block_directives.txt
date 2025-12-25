@@ -1,0 +1,130 @@
+==================
+Lua Block Directive - access_by_lua_block
+==================
+
+ access_by_lua_block {
+	 do_something("hello, world!\nhiya\n")
+ }
+
+---
+
+(conf
+  (lua_block_directive
+	(lua_block
+	  (lua_code)
+	  (lua_code)
+	)
+  )
+)
+
+==================
+Lua Block Directive - header_filter_by_lua_block
+==================
+
+header_filter_by_lua_block {
+    ngx.header["content-length"] = nil
+}
+
+---
+
+(conf
+  (lua_block_directive
+	(lua_block
+	  (lua_code)
+	  (lua_code)
+	)
+  )
+)
+
+==================
+Lua Block Directive - body_filter_by_lua_block
+==================
+
+body_filter_by_lua_block {
+	local data, eof = ngx.arg[1], ngx.arg[2]
+}
+
+---
+
+(conf
+  (lua_block_directive
+	(lua_block
+	  (lua_code)
+	)
+  )
+)
+
+==================
+Lua Block Directive - log_by_lua_block
+==================
+
+log_by_lua_block {
+	print("I need no extra escaping here, for example: \r\nblah")
+}
+
+---
+
+(conf
+  (lua_block_directive
+	(lua_block
+	  (lua_code)
+	  (lua_code)
+	)
+  )
+)
+
+==================
+Lua Block Directive - balancer_by_lua_block
+==================
+
+balancer_by_lua_block {
+
+}
+
+---
+
+(conf
+  (lua_block_directive
+	(lua_block
+	  (lua_code)
+	)
+  )
+)
+
+==================
+Lua Block Directive - content_by_lua_block
+==================
+
+content_by_lua_block {
+	ngx.say("I need no extra escaping here, for example: \r\nblah")
+}
+
+---
+
+(conf
+  (lua_block_directive
+	(lua_block
+	  (lua_code)
+	  (lua_code)
+	)
+  )
+)
+
+==================
+Lua Block Directive - rewrite_by_lua_block
+==================
+
+rewrite_by_lua_block {
+	do_something("hello, world!\nhiya\n")
+}
+
+---
+
+(conf
+  (lua_block_directive
+	(lua_block
+	  (lua_code)
+	  (lua_code)
+	)
+  )
+)

@@ -1,0 +1,125 @@
+==================
+Block Directive - Minimal HTTP
+==================
+
+http {}
+
+---
+
+(conf
+  (block_directive
+    (directive)
+    (block)))
+
+
+==================
+Block Directive - Event Block
+==================
+
+events {
+	worker_connections   2000;
+
+	# use [ kqueue | epoll | /dev/poll | select | poll ];
+	use kqueue;
+}
+
+---
+
+(conf
+  (block_directive
+    (directive)
+    (block
+      (simple_directive
+        (directive)
+        (param
+          (number)))
+      (comment)
+      (simple_directive
+        (directive)
+        (param
+          (generic))))))
+
+
+==================
+Block Directive - Nested
+==================
+
+http {
+	server_tokens off;
+	include       mime.types;
+	charset       utf-8;
+
+	access_log    logs/access.log  combined;
+
+	server {
+		server_name   localhost;
+		listen        127.0.0.1:80;
+
+		error_page    500 502 503 504  /50x.html;
+
+		location      / {
+			root      html;
+		}
+	}
+}
+
+---
+
+(conf
+  (block_directive
+    (directive)
+    (block
+      (simple_directive
+        (directive)
+        (param
+          (generic)))
+      (simple_directive
+        (directive)
+        (param
+          (generic)))
+      (simple_directive
+        (directive)
+        (param
+          (generic)))
+      (simple_directive
+        (directive)
+        (param
+          (generic))
+        (param
+          (generic)))
+      (block_directive
+        (directive)
+        (block
+          (simple_directive
+            (directive)
+            (param
+              (generic)))
+          (simple_directive
+            (directive)
+            (param
+              (ipv4))
+            (param
+              (regex))
+            (param
+              (number)))
+          (simple_directive
+            (directive)
+            (param
+              (number))
+            (param
+              (number))
+            (param
+              (number))
+            (param
+              (number))
+            (param
+              (generic)))
+          (block_directive
+            (directive)
+            (param
+              (regex))
+            (block
+              (simple_directive
+                (directive)
+                (param
+                  (generic))))))))))
