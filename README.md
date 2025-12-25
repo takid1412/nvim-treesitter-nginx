@@ -6,10 +6,12 @@ Neovim treesitter integration for [tree-sitter-nginx](https://gitlab.com/joncool
 
 ```lua
 {
-    'dlvandenberg/nvim-treesitter-nginx',
+    "takid1412/nvim-treesitter-nginx",
     dependencies = {
-        'nvim-treesitter/nvim-treesitter'
-    }
+        "nvim-treesitter/nvim-treesitter",
+    },
+    lazy = false,
+    build = ":TSUpdate nginx",
 }
 ```
 
